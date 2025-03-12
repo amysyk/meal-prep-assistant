@@ -14,6 +14,11 @@ with open('meal-prep-assistant.md', 'r') as file:
     relevant_context = relevant_context + file.read()
     file.close()
 
+with open('file-to-meal-mapping.txt', 'r') as file:
+    # Read the content of the file into a string variable
+    relevant_context = relevant_context + file.read()
+    file.close()
+
 # Get salient recipes
 def salient_recipes (file_paths):
     recipes = ""
@@ -24,7 +29,7 @@ def salient_recipes (file_paths):
             file.close()
     return recipes
 
-relevant_context = relevant_context + salient_recipes (["data/Week_of_August_18th_2024.txt", "data/Week_of_August_25th_2024.txt"])
+#relevant_context = relevant_context + salient_recipes (["data/Week_of_August_18th_2024.txt", "data/Week_of_August_25th_2024.txt"])
 
 if LLM_PROVIDER == "OPENAI":
     from openai import OpenAI

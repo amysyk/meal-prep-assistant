@@ -112,6 +112,7 @@ do not remember the meal.
 When asked to prep instructions, return Sunday prep section for the meal from the meal bank, omitting the day mentioned in the bank.
 
 # Things to remember
+* ignore dates and days from the recipes
 * oil and olive oil are the same thing
 * grocery list and shopping list are the same thing
 * for week of February 3 2025, I will make Honey Mustard Crumb Salmon, Zaatar-Lemon Chicken, Chicken Fajitas, and Bankok Noodles Monday through Thursday
@@ -139,5 +140,5 @@ Thursday - Summer Corn + Squash Orecchiette Pasta
 
 
 # Recipe database
-The meal recipes come from a bank of over 130 meals. Ignore meal dates.
-The most relevant meals for user question are included below.
+The meal recipes come from a database of over 130 meals. The following mapping lists
+all knowns meals and database files that their recipes are stored in.
