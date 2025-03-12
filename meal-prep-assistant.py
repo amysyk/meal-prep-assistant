@@ -8,17 +8,23 @@ from datetime import date
 today = date.today()
 relevant_context = f" Today's date is {today}. "
 
-#Gather relevant relevant relevant context
+# Get system prompt
 with open('meal-prep-assistant.md', 'r') as file:
     # Read the content of the file into a string variable
     relevant_context = relevant_context + file.read()
     file.close()
 
-# Get recipe content
-with open('data/Week_of_August_18th_2024.txt', 'r') as file:
-    # Read the content of the file into a string variable
-    relevant_context = relevant_context + file.read()
-    file.close()
+# Get salient recipes
+def salient_recipes (file_paths):
+    recipes = ""
+    for file_path in file_paths:
+        with open(file_path, 'r') as file:
+            # Read the content of the file into a string variable
+            recipes = recipes + "/n" + file.read()
+            file.close()
+    return recipes
+
+relevant_context = relevant_context + salient_recipes (["data/Week_of_August_18th_2024.txt"])
 
 if LLM_PROVIDER == "OPENAI":
     from openai import OpenAI
