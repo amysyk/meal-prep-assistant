@@ -24,7 +24,7 @@ def salient_recipes (file_paths):
             file.close()
     return recipes
 
-relevant_context = relevant_context + salient_recipes (["data/Week_of_August_18th_2024.txt"])
+relevant_context = relevant_context + salient_recipes (["data/Week_of_August_18th_2024.txt", "data/Week_of_August_25th_2024"])
 
 if LLM_PROVIDER == "OPENAI":
     from openai import OpenAI
