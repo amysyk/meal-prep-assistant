@@ -14,7 +14,7 @@ with open('meal-prep-assistant.md', 'r') as file:
     relevant_context = relevant_context + file.read()
     file.close()
 
-with open('file-to-meal-mapping.txt', 'r') as file:
+with open('data/file-to-meal-mapping.txt', 'r') as file:
     # Read the content of the file into a string variable
     relevant_context = relevant_context + file.read()
     file.close()
