@@ -15,14 +15,10 @@ with open('meal-prep-assistant.md', 'r') as file:
     file.close()
 
 # Get recipe content
-from langchain_community.document_loaders import PyPDFLoader
-files = ("data/Week_of_August_18th_2024.pdf",)
-# files = ["data/" + f for f in os.listdir("data") if not f.startswith('.')]
-pages = []
-for file in files:
-    loader = PyPDFLoader(file_path = file, mode="single")
-    for page in loader.lazy_load():
-        relevant_context = relevant_context + "/n" + page.page_content
+with open('data/Week_of_August_18th_2024.txt', 'r') as file:
+    # Read the content of the file into a string variable
+    relevant_context = relevant_context + file.read()
+    file.close()
 
 if LLM_PROVIDER == "OPENAI":
     from openai import OpenAI
@@ -112,10 +108,10 @@ def generate_response(user_input, llm_proivder = LLM_PROVIDER):
 # Streamlit App
 import streamlit as st
 st.set_page_config(
-    page_title="Alex, the meal prep assistant",
-    page_icon="🗓️"  # You can use an emoji or a file path to an image
+    page_title="Meal prep assistant",
+    page_icon="👨‍🍳"  # You can use an emoji or a file path to an image
 )
-st.title("Alex, the meal prep assistant")
+st.title("Meal prep assistant")
 st.write("Ask me questions such as 'What is the meal plan for this week?' or 'What \
 are the rally instructions for today?''")
 
@@ -129,7 +125,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # React to user input
-if input := st.chat_input("Message Alex"):
+if input := st.chat_input("Message meal prep assistant"):
     # Display user message in chat message container
     st.chat_message("user").markdown(input)
     # Add user message to chat history
