@@ -14,11 +14,6 @@ with open('meal-prep-assistant.md', 'r') as file:
     relevant_context = relevant_context + file.read()
     file.close()
 
-with open('data/file-to-meal-mapping.txt', 'r') as file:
-    # Read the content of the file into a string variable
-    relevant_context = relevant_context + file.read()
-    file.close()
-
 # Get salient recipes
 def salient_recipes (file_paths):
     recipes = ""
@@ -28,8 +23,6 @@ def salient_recipes (file_paths):
             recipes = recipes + "/n" + file.read()
             file.close()
     return recipes
-
-#relevant_context = relevant_context + salient_recipes (["data/Week_of_August_18th_2024.txt", "data/Week_of_August_25th_2024.txt"])
 
 if LLM_PROVIDER == "OPENAI":
     from openai import OpenAI
@@ -48,12 +41,55 @@ elif LLM_PROVIDER == "GOOGLE":
     client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 
 # Function to interact with LLM
-def generate_response(user_input, llm_proivder = LLM_PROVIDER):
+def generate_response(user_input, relevant_context, llm_proivder = LLM_PROVIDER):
     try:
         if LLM_PROVIDER == "OPENAI":
             print("User prompt:")
             print(user_input)
 
+            # #find out which files to load
+            # chat_completion = client.chat.completions.create(
+            #       model="gpt-4o-mini",
+            #       messages=[
+            #         {
+            #           "role": "system",
+            #           "content": [
+            #             {
+            #               "type": "text",
+            #               "text": relevant_context}
+            #           ]
+            #         },
+            #         {
+            #           "role": "user",
+            #           "content": [
+            #             {
+            #               "type": "text",
+            #               "text": "Lookup file names in the provided table to see \
+            #               which files have recipes relevant to following question \
+            #               and return the file names as a Python list:" + f"'{user_input}'"
+            #             }
+            #           ]
+            #         }
+            #       ],
+            #       temperature=1,
+            #       max_completion_tokens=2048,
+            #       top_p=1,
+            #       frequency_penalty=0,
+            #       presence_penalty=0
+            #       )
+            #
+            # first_response = chat_completion.choices[0].message.content
+            # start = first_response.find('[')
+            # end = first_response.find(']') + 1
+            # first_response = first_response[start:end]
+            # print("First response:")
+            # first_response
+
+            #load salient files
+            salient_files = ["data/Week_of_September_15th_2024.txt", "data/Week_of_June_23rd_2024.txt", "data/Week_of_December_15th_2024.txt", "data/Week_of_July_14th_2024.txt"]
+            relevant_context = relevant_context + salient_recipes (salient_files)
+
+            #ask user question
             chat_completion = client.chat.completions.create(
                   model="gpt-4o-mini",
                   messages=[
@@ -142,7 +178,7 @@ if input := st.chat_input("Message meal prep assistant"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": input})
     # print (f"Question: {input}")
-    response = generate_response(input)
+    response = generate_response(user_input=input, relevant_context=relevant_context)
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         st.markdown(response)
