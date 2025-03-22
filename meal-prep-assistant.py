@@ -49,8 +49,6 @@ elif LLM_PROVIDER == "GOOGLE":
 def generate_response(user_input, relevant_context, llm_proivder = LLM_PROVIDER):
     try:
         if LLM_PROVIDER == "OPENAI":
-            print("User prompt:")
-            print(user_input)
 
             # #find out which files to load
             # chat_completion = client.chat.completions.create(
@@ -91,7 +89,7 @@ def generate_response(user_input, relevant_context, llm_proivder = LLM_PROVIDER)
             # first_response
 
             #load salient files
-            salient_files = ["data/Week_of_September_15th_2024.txt", "data/Week_of_June_23rd_2024.txt", "data/Week_of_December_15th_2024.txt", "data/Week_of_July_14th_2024.txt", "data/Week_of_September_22nd_2024.txt"]
+            salient_files = ["data/Week_of_December_15th_2024.txt", "data/Week_of_November_3rd_2024.txt", "data/Week_of_December_1st_2024.txt", "data/Week_of_November_17th_2024.txt"]
             relevant_context = relevant_context + salient_recipes (salient_files)
 
             #ask user question

@@ -141,7 +141,12 @@ Thursday - Summer Corn + Squash Orecchiette Pasta
 Monday - Crispy Salmon with Green Goddess Dressing, and Asparagus
 Tuesday - Herb and Lemon Spatchcock Chicken with Potatoes and Garlic with Brussels Sprouts
 Wednesday - Persian Kabobs with Rice, Balsamic Tomatoes, and Asparagus
-Thursday - Pasta Primavera with Peas and Tomatoes                                     
+Thursday - Pasta Primavera with Peas and Tomatoes       
+* for week of March 24, 2025 the meal plan is:
+Monday - Chicken Fajitas with Smash Fried Potatoes
+Tuesday - Meatballs with Rice (or Spaghetti) and Garlicky Green Beans   
+Wednesday - Sausage and Peppers in Buns Served with Brussels Sprouts
+Thursday - Chicken Adobo with Polenta and Mushrooms          
 
 # Recipe database
 The meal recipes come from a database stored across multiple files. The following mapping lists
