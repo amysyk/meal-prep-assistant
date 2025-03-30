@@ -147,7 +147,7 @@ Monday - Chicken Fajitas with Smash Fried Potatoes
 Tuesday - Meatballs with Rice (or Spaghetti) and Garlicky Green Beans   
 Wednesday - Sausage and Peppers in Buns Served with Brussels Sprouts
 Thursday - Chicken Adobo with Polenta and Mushrooms
-* for week of March 21, 2025 the meal plan is:
+* for week of March 31, 2025 the meal plan is:
 Monday - Loaded Chicken Ramen Bowls
 Tuesday - Chicken Fajitas with Smash Fried Potatoes
 Wendesday - Meatballs with Rice (or Spaghetti) and Garlicky Green Beans
