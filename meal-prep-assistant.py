@@ -89,7 +89,7 @@ def generate_response(user_input, relevant_context, llm_proivder = LLM_PROVIDER)
             # first_response
 
             #load salient files
-            salient_files = ["data/Week_of_December_15th_2024.txt", "data/Week_of_November_3rd_2024.txt", "data/Week_of_December_1st_2024.txt", "data/Week_of_November_17th_2024.txt"]
+            salient_files = ["data/Week_of_December_15th_2024.txt", "data/Week_of_November_3rd_2024.txt", "data/Week_of_August_25th_2024.txt", "data/Week_of_November_17th_2024.txt"]
             relevant_context = relevant_context + salient_recipes (salient_files)
 
             #ask user question
