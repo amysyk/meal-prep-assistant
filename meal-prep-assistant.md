@@ -153,7 +153,6 @@ Tuesday - Chicken Fajitas with Smash Fried Potatoes
 Wendesday - Meatballs with Rice (or Spaghetti) and Garlicky Green Beans
 Thursday - Grilled Salmon w/ Tahini Yogurt Sauce, Sauteed Asparagus, + Lemony Orzo
 * for week of April 14, 2025, the meal plan is
-Monday - pasta and sauce
 Tuesday - Chicken Pitas w/ Pistachio Mint Pesto, Marinated Cucumber and Onion, + Crispy Baked Sweet Potato Fries
 Wednesday - Cumin Baked Meatballs with Roasted Cabbage and Cilantro Lime Sauce  
 Thursday - Herb and Lemon Spatchcock Chicken with Potatoes and Garlic with Brussels Sprouts
