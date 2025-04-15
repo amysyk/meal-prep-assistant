@@ -146,7 +146,18 @@ Thursday - Pasta Primavera with Peas and Tomatoes
 Monday - Chicken Fajitas with Smash Fried Potatoes
 Tuesday - Meatballs with Rice (or Spaghetti) and Garlicky Green Beans   
 Wednesday - Sausage and Peppers in Buns Served with Brussels Sprouts
-Thursday - Chicken Adobo with Polenta and Mushrooms          
+Thursday - Chicken Adobo with Polenta and Mushrooms
+* for week of March 31, 2025 the meal plan is:
+Monday - Loaded Chicken Ramen Bowls
+Tuesday - Chicken Fajitas with Smash Fried Potatoes
+Wendesday - Meatballs with Rice (or Spaghetti) and Garlicky Green Beans
+Thursday - Grilled Salmon w/ Tahini Yogurt Sauce, Sauteed Asparagus, + Lemony Orzo
+* for week of April 14, 2025, the meal plan is
+Monday - pasta and sauce
+Tuesday - Chicken Pitas w/ Pistachio Mint Pesto, Marinated Cucumber and Onion, + Crispy Baked Sweet Potato Fries
+Wednesday - Cumin Baked Meatballs with Roasted Cabbage and Cilantro Lime Sauce  
+Thursday - Herb and Lemon Spatchcock Chicken with Potatoes and Garlic with Brussels Sprouts
+Friday - Crispy Salmon with Green Goddess Dressing, and Asparagus     
 
 # Recipe database
 The meal recipes come from a database stored across multiple files. The following mapping lists
