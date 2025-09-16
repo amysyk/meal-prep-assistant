@@ -40,3 +40,5 @@ with open(TXT_FOLDER + "file-to-meal-mapping.txt", "w") as file:
     #save as text
     file.write(response.text)
     file.close()
+
+print("All done")
