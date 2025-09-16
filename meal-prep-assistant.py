@@ -6,7 +6,7 @@ logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-LLM_PROVIDER = "OPENAI"
+LLM_PROVIDER = "ANTHROPIC"
 
 # Tell the model today's date
 from datetime import date
@@ -29,129 +29,35 @@ def salient_recipes (file_paths):
             file.close()
     return recipes
 
-if LLM_PROVIDER == "OPENAI":
-    from openai import OpenAI
-    client = OpenAI(
-        api_key=st.secrets["OPENAI_API_KEY"],
-    )
-
-elif LLM_PROVIDER == "ANTHROPIC":
-    import anthropic
-    client = anthropic.Anthropic(
-        api_key=st.secrets["ANTHROPIC_API_KEY"],
-        )
-
-elif LLM_PROVIDER == "GOOGLE":
-    from google import genai
-    client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
+import anthropic
+client = anthropic.Anthropic(
+    api_key=st.secrets["ANTHROPIC_API_KEY"],
+)
 
 # Function to interact with LLM
-def generate_response(user_input, relevant_context, llm_proivder = LLM_PROVIDER):
+def generate_response(user_input, relevant_context):
     try:
-        if LLM_PROVIDER == "OPENAI":
-
-            # #find out which files to load
-            # chat_completion = client.chat.completions.create(
-            #       model="gpt-4o-mini",
-            #       messages=[
-            #         {
-            #           "role": "system",
-            #           "content": [
-            #             {
-            #               "type": "text",
-            #               "text": relevant_context}
-            #           ]
-            #         },
-            #         {
-            #           "role": "user",
-            #           "content": [
-            #             {
-            #               "type": "text",
-            #               "text": "Lookup file names in the provided table to see \
-            #               which files have recipes relevant to following question \
-            #               and return the file names as a Python list:" + f"'{user_input}'"
-            #             }
-            #           ]
-            #         }
-            #       ],
-            #       temperature=1,
-            #       max_completion_tokens=2048,
-            #       top_p=1,
-            #       frequency_penalty=0,
-            #       presence_penalty=0
-            #       )
-            #
-            # first_response = chat_completion.choices[0].message.content
-            # start = first_response.find('[')
-            # end = first_response.find(']') + 1
-            # first_response = first_response[start:end]
-            # print("First response:")
-            # first_response
-
-            #load salient files
-            salient_files = ["data/Week_of_August_25th_2024.txt", "data/Week_of_January_12th_2025.txt", "data/Week_of_June_23rd_2024.txt", "data/Week_of_September_22nd_2024.txt"]
-
-            #ask user question
-            chat_completion = client.chat.completions.create(
-                  model="gpt-4o-mini",
-                  messages=[
-                    {
-                      "role": "system",
-                      "content": [
-                        {
-                          "type": "text",
-                          "text": relevant_context}
-                      ]
-                    },
-                    {
-                      "role": "user",
-                      "content": [
-                        {
-                          "type": "text",
-                          "text": user_input
-                        }
-                      ]
-                    }
-                  ],
-                  temperature=1,
-                  max_completion_tokens=2048,
-                  top_p=1,
-                  frequency_penalty=0,
-                  presence_penalty=0
-                  )
-            return chat_completion.choices[0].message.content
-
-            messages = prompt.invoke({"question": user_input, "context": relevant_context + "/n" + docs_content})
-            response = llm.invoke(messages)
-            return response.content
-        elif LLM_PROVIDER == "ANTHROPIC":
-            message = client.messages.create(
-                model="claude-3-7-sonnet-20250219",
-                max_tokens=1024,
-                system=[
-                  {
-                    "type": "text",
-                    "text": relevant_context,
-                    "cache_control": {"type": "ephemeral"}
-                  }
-                ],
-                messages=[
-                {"role": "user", "content": user_input}
-                ],
-            )
-            for content_block in message.content:
-                if content_block.type == "text":
-                    text = content_block.text
-            return text
-        elif LLM_PROVIDER == "GOOGLE":
-            response = client.models.generate_content(
-                model="gemini-2.0-flash", #gemini-1.5-pro
-                contents=relevant_context + user_input
-            )
-            return response.text
+        message = client.messages.create(
+            model="claude-3-5-sonnet-20241022",
+            max_tokens=2048,
+            system=[
+              {
+                "type": "text",
+                "text": relevant_context,
+                "cache_control": {"type": "ephemeral"}
+              }
+            ],
+            messages=[
+            {"role": "user", "content": user_input}
+            ],
+        )
+        for content_block in message.content:
+            if content_block.type == "text":
+                text = content_block.text
+        return text
     except Exception as e:
-        print (e)
-        return
+        logger.error(f"Error generating response: {e}")
+        return "Sorry, I encountered an error while processing your request."
 
 
 # Streamlit App
