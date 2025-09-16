@@ -161,6 +161,7 @@ st.set_page_config(
     page_icon="👨‍🍳"  # You can use an emoji or a file path to an image
 )
 st.title("Meal prep assistant")
+st.warning("⚠️ **DEPRECATION NOTICE**: This product has been deprecated and is no longer actively maintained. Please consider migrating to alternative solutions.")
 st.write("Ask me questions such as 'What is the meal plan for this week?' or 'What \
 are the rally instructions for today?''")
 
